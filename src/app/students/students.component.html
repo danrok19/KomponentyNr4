@@ -1,0 +1,16 @@
+<div class="body">
+    <div class="list-students">
+        <p [ngClass]="'title'" appPrintTitle color="green" sep="~">List of students:</p>
+        <ol>
+            <li *ngFor="let student of students;odd as isOdd; even as isEven;index as i; ">
+                <print-student [isOdd]="isOdd" [studentForPrint]="student"
+                    title="{{student.Name.endsWith('a')?'Pani':'Pan'}}" (doEditInParent)="doEdit($event)" [which]="i"
+                    (doDeleteInParent)="deleteStudent(student)" [allStudentsAvg]="calcAllStudentsAvg()"></print-student>
+
+            </li>
+        </ol>
+    </div>
+    <div class="add-student">
+        <app-add-student (newStudent)="onStudentAdded($event)"></app-add-student>
+    </div>
+</div>

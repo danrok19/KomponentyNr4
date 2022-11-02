@@ -1,0 +1,21 @@
+<span [class.oddRow]="isOdd" [class.evenRow]="!isOdd" (click)="clickOnStudent(studentForPrint.Index_nr)">{{title}}
+    {{studentForPrint.Name}} {{studentForPrint.Surname}} {{studentForPrint.Index_nr}}</span>
+<button (click)="deleteWhichStudent()">Usuń</button>
+<button (click)="showSubjects()">Szczegóły</button>
+
+<div class="subjects" *ngIf="show!=-1">
+    <p *ngFor="let subject of studentForPrint.Subjects">
+        {{subject.name }} : {{subject.rate}}
+    </p>
+    <p>Średnia ocen: {{studentForPrint.GradesAvg | number: '2.1-1'}}</p>
+    <p *ngIf="sholarship!=-1">Stypendium: {{sholarship}}zł</p>
+
+    <button (click)="show=-1">Schowaj</button>
+    <button (click)="sholarship=-1; calcSholarship()">Stypendium</button>
+</div>
+
+<div *ngIf="clicked!=-1">
+    <app-student-edit (onStudentEdit)="hide($event)" (onCancelStudentEdit)="cancelEditing()"></app-student-edit>
+</div>
+
+<app-student-delete *ngIf="studentToDelete!=-1" (isDelete)="isDelete($event)"></app-student-delete>

@@ -1,0 +1,19 @@
+.title {
+  font-size: 40px;
+}
+li {
+  margin-bottom: 5px;
+}
+button {
+  margin: 5px;
+}
+.body {
+  display: flex;
+  width: 100%;
+}
+.list-students {
+  width: 50%;
+}
+.add-student {
+  width: 40%;
+}
